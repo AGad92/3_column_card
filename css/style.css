@@ -8,6 +8,8 @@
   --bright-orange: hsl(31, 77%, 52%);
   --dark-cayan: hsl(184, 100%, 22%);
   --very-dark-cayan: hsl(179, 100%, 13%);
+
+  --border-radius: 6px;
 }
 
 body {
@@ -16,27 +18,26 @@ body {
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
-  width: 50%;
-  margin: 0 auto;
-  border-radius: 5px;
-  overflow: hidden;
+  height: inherit;
 }
 
 .card {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 3rem;
+  padding: 30px 40px;
+  width: 300px;
+  max-width: 90%;
 }
 
 .card:first-child {
   background-color: var(--bright-orange);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 }
 
 .card:nth-child(2) {
@@ -45,6 +46,8 @@ body {
 
 .card:nth-child(3) {
   background-color: var(--very-dark-cayan);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }
 
 .card__title {
@@ -61,6 +64,7 @@ body {
   font-size: inherit;
   margin-top: 2rem;
   line-height: 1.6;
+  word-spacing: 2px;
 }
 
 .card__btn {
@@ -68,10 +72,11 @@ body {
   font-size: inherit;
   font-weight: 400;
   margin-top: 5rem;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   border-radius: 100px;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .card:first-child .card__btn {
@@ -83,4 +88,32 @@ body {
 }
 .card:nth-child(3) .card__btn {
   color: var(--very-dark-cayan);
+}
+
+.card .card__btn:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+@media only screen and (max-width: 750px) {
+  body {
+    height: auto;
+  }
+  .container {
+    flex-direction: column;
+    padding: 40px 0;
+  }
+
+  .card:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: 0;
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .card:nth-child(3) {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-top-right-radius: 0;
+  }
 }
